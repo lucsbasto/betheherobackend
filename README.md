@@ -57,6 +57,6 @@ Aplicação onde pessoas com coração de heróis poderão realizar seus atos de
 
 - DELETE /incidents/:id
 
-  - Delete um caso
+  - Deleta um caso
 
 #### Aplicação desenvolvida durante a Semana Omnistack 11.0 da [RocketSeat](https://github.com/Rocketseat)
