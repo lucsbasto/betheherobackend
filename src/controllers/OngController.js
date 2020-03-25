@@ -27,5 +27,50 @@ module.exports = {
       .offset((page - 1) * 5)
       .select("*");
     return res.json(ongs);
+  },
+
+  async update(req, res) {
+    const ong_id = req.headers.authorization;
+    const { name, email, whatsapp, city, UF } = req.body;
+    if (!ong_id) {
+      return res
+        .status(401)
+        .json({ error: "You need to be logged to do this action" });
+    }
+    let ong = await connection("ongs")
+      .where("id", ong_id)
+      .select("*")
+      .first();
+    const new_ong = {
+      name: name || ong.name,
+      email: email || ong.email,
+      whatsapp: whatsapp || ong.whatsapp,
+      city: city || ong.city,
+      UF: UF || ong.uf
+    };
+    await connection("ongs")
+      .where("id", ong_id)
+      .update(new_ong);
+    ong = await connection("ongs")
+      .where("id", ong_id)
+      .select("*")
+      .first();
+    return res.json({ ong });
+  },
+
+  async delete(req, res) {
+    const ong_id = req.headers.authorization;
+    if (ong_id) {
+      return res
+        .status(401)
+        .json({ error: "You need to be logged to do this action" });
+    }
+    const ong = await connection("ongs")
+      .where("id", ong_id)
+      .delete();
+
+    if (!ong) {
+      return res.status(404).json({ error: " not found" });
+    }
   }
 };

@@ -13,13 +13,9 @@ routes.post("/ongs", OngController.store);
 
 routes.get("/ongs", OngController.index);
 
-routes.put("/ongs", (req, res) => {
-  return res.json({ ok: true });
-});
+routes.put("/ongs", OngController.update);
 
-routes.delete("/ongs", (req, res) => {
-  return res.json({ ok: true });
-});
+routes.delete("/ongs", OngController.delete);
 
 routes.post("/incidents", IncidentController.store);
 
