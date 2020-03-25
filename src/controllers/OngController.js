@@ -18,7 +18,12 @@ module.exports = {
   },
 
   async index(req, res) {
-    const ongs = await connection("ongs").select("*");
+    const { page = 1, limit = 5 } = req.query;
+
+    const ongs = await connection("ongs")
+      .limit(limit)
+      .offset((page - 1) * 5)
+      .select("*");
     return res.json(ongs);
   }
 };

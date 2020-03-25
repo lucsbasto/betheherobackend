@@ -2,7 +2,11 @@ const connection = require("../database/connection");
 
 module.exports = {
   async index(req, res) {
-    const incidents = await connection("incidents").select("*");
+    const { page = 1, limit = 5 } = req.query;
+    const incidents = await connection("incidents")
+      .limit(limit)
+      .offset((page - 1) * limit)
+      .select("*");
     return res.json({ incidents });
   },
   async store(req, res) {
