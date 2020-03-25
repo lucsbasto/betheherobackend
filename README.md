@@ -18,9 +18,6 @@ Aplicação onde pessoas com coração de heróis poderão realizar seus atos de
 - yarn dev or npm run dev
 
 ## API
-
-- Disponível em [https://betheherobackend.herokuapp.com](https://betheherobackend.herokuapp.com)
-
 ## Rotas
 
 - POST /login
@@ -56,6 +53,7 @@ Aplicação onde pessoas com coração de heróis poderão realizar seus atos de
   - Lista todos os casos
 
 - DELETE /incidents/:id
+
   - Delete um caso
 
 #### Aplicação desenvolvida durante a Semana Omnistack 11.0 da [RocketSeat](https://github.com/Rocketseat)
