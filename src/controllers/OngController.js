@@ -19,6 +19,8 @@ module.exports = {
 
   async index(req, res) {
     const { page = 1, limit = 5 } = req.query;
+    const [count] = await connection("ongs").count();
+    res.header("X-Total", count["count(*)"]);
 
     const ongs = await connection("ongs")
       .limit(limit)
