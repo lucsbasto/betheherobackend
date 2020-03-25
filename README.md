@@ -18,6 +18,9 @@ Aplicação onde pessoas com coração de heróis poderão realizar seus atos de
 - yarn dev or npm run dev
 
 ## API
+
+- Disponível em [https://betheherobackend.herokuapp.com](https://betheherobackend.herokuapp.com)
+
 ## Rotas
 
 - POST /login
