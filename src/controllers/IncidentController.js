@@ -5,9 +5,17 @@ module.exports = {
     const { page = 1, limit = 5 } = req.query;
     const [count] = await connection("incidents").count();
     const incidents = await connection("incidents")
+      .join("ongs", "ongs.id", "=", " incidents.ong_id")
       .limit(limit)
       .offset((page - 1) * limit)
-      .select("*");
+      .select([
+        "incidents.*",
+        "ongs.name",
+        "ongs.city",
+        "ongs.whatsapp",
+        "ongs.email",
+        "ongs.uf"
+      ]);
     res.header("X-Total", count["count(*)"]);
     return res.json({ incidents });
   },
